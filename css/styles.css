@@ -1,0 +1,516 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+html,
+body {
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.demo-avatar {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 15px;
+    border-radius: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.demo-layout .demo-header .mdl-textfield {
+    padding-top: 27px;
+}
+
+.demo-layout .mdl-layout__header .mdl-layout__drawer-button {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.mdl-layout-title {
+    color: black;
+}
+
+.mdl-layout__drawer .avatar {
+    margin-bottom: 16px;
+}
+
+.demo-drawer {
+    border: none;
+}
+
+
+/* iOS Safari specific workaround */
+
+.demo-drawer .mdl-menu__container {
+    z-index: -1;
+}
+
+.demo-drawer .demo-navigation {
+    z-index: -2;
+}
+
+
+/* END iOS Safari specific workaround */
+
+.demo-drawer .mdl-menu .mdl-menu__item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.demo-drawer-header {
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 16px;
+    height: 125px;
+}
+
+.demo-avatar-dropdown {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.demo-navigation {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+.demo-layout .demo-navigation .mdl-navigation__link {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.56);
+    font-weight: 500;
+}
+
+.demo-layout .demo-navigation .mdl-navigation__link:hover {
+    background-color: #00BCD4;
+    color: #37474F;
+}
+
+.demo-navigation .mdl-navigation__link .material-icons {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.56);
+    margin-right: 32px;
+}
+
+.demo-content {
+    max-width: 1080px;
+}
+
+.demo-charts {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.demo-chart:nth-child(1) {
+    color: #ACEC00;
+}
+
+.demo-chart:nth-child(2) {
+    color: #00BBD6;
+}
+
+.demo-chart:nth-child(3) {
+    color: #BA65C9;
+}
+
+.demo-chart:nth-child(4) {
+    color: #EF3C79;
+}
+
+.demo-graphs {
+    padding: 16px 32px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+}
+
+
+/* TODO: Find a proper solution to have the graphs
+ * not float around outside their container in IE10/11.
+ * Using a browserhacks.com solution for now.
+ */
+
+_:-ms-input-placeholder,
+:root .demo-graphs {
+    min-height: 664px;
+}
+
+_:-ms-input-placeholder,
+:root .demo-graph {
+    max-height: 300px;
+}
+
+
+/* TODO end */
+
+.demo-graph:nth-child(1) {
+    color: #00b9d8;
+}
+
+.demo-graph:nth-child(2) {
+    color: #d9006e;
+}
+
+.demo-cards {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+}
+
+.demo-cards .demo-separator {
+    height: 32px;
+}
+
+.demo-cards .mdl-card__title.mdl-card__title {
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.demo-cards ul {
+    padding: 0;
+}
+
+.demo-cards h3 {
+    font-size: 1em;
+}
+
+.demo-updates .mdl-card__title {
+    min-height: 200px;
+    background-image: url('images/dog.png');
+    background-position: 90% 100%;
+    background-repeat: no-repeat;
+}
+
+.demo-cards .mdl-card__actions a {
+    color: #00BCD4;
+    text-decoration: none;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.demo-options h3 {
+    margin: 0;
+}
+
+.demo-options .mdl-checkbox__box-outline {
+    border-color: rgba(255, 255, 255, 0.89);
+}
+
+.demo-options ul {
+    margin: 0;
+    list-style-type: none;
+}
+
+.demo-options li {
+    margin: 4px 0;
+}
+
+.demo-options .material-icons {
+    color: rgba(255, 255, 255, 0.89);
+}
+
+.demo-options .mdl-card__actions {
+    height: 64px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    box-sizing: border-box;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.demo-card-square.mdl-card {
+    width: 99%;
+}
+
+.mdl-card {
+    min-height: 100px;
+}
+
+.title {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+}
+
+.subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 30px;
+}
+
+.demo-card-wide.mdl-card {
+    width: auto;
+    margin: 5px;
+    padding: 5px;
+}
+
+.demo-card-wide > .mdl-trends {
+    color: black;
+    height: auto;
+    padding: 10px;
+}
+
+.demo-card-wide > .mdl-card__menu {
+    color: black;
+}
+
+.mdl-card__title-text {
+    width: 90%;
+}
+
+.mdl-card__supporting-text {
+    width: auto;
+    padding: 10px;
+}
+
+.mdl-card__actions {
+    width: 98%;
+    background-color: #ffd600;
+    padding: 0px;
+    margin: 2px;
+}
+
+.mdl-fullwidth {
+    width: 92%;
+}
+
+.filtermenu {
+    padding: 5px;
+}
+
+.widthfull {
+    width: 100%;
+}
+
+.widthsomewhatfull {
+    width: 97%;
+}
+
+.charting {
+    height: 400px;
+}
+
+select {
+    font-family: inherit;
+    background-color: transparent;
+    width: 100%;
+    padding-bottom: $select-padding 5;
+    font-size: $select-font-size;
+    color: $select-color;
+    border-bottom: 1px solid $select-border-color;
+    height: 25px;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-content: center;
+}
+
+.loginform {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mdl-layout__content {
+    padding: 10px;
+}
+
+.fullwidthbutton {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logoimage {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    text-align: center;
+}
+
+.halfwidth {
+    width: 40%;
+}
+
+.hidden {
+    display: none;
+}
+
+.footchat {
+    background-color: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: scroll;
+    z-index: 3;
+}
+
+.chatdiv {
+    padding: 20px;
+    background-color: white;
+    height: 450px;
+    width: 100%;
+    line-height: 30px;
+    overflow: scroll;
+}
+
+.smallerdiv {
+    width: 100%;
+}
+
+.emptyspace {
+    height: 20px;
+}
+
+.map {
+    height: 250px;
+    max-height: none;
+}
+
+.medtext {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+    color: black;
+    font-size: 40px;
+}
+
+.bigtext {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    color: black;
+    font-size: 25px;
+}
+
+.space {
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.marginspace {
+    margin-bottom: 10px;
+}
+
+.centeralign {
+    text-align: center;
+}
+
+.buttonholder {
+    margin-left: 6%;
+    margin-right: 6%;
+}
+#registerDiv{
+    display: none;
+}
+.littleroom{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-bottom: solid;
+    border-width: 2px;
+}
+
+.little{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-width: 2px;
+}

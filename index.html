@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="EMRWait App">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EMRWait App</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable " content="yes ">
+    <link rel="icon " sizes="192x192 " href="images/android-desktop.png ">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable " content="yes ">
+    <meta name="apple-mobile-web-app-status-bar-style " content="black ">
+    <meta name="apple-mobile-web-app-title " content="WealthConnect ">
+    <link rel="apple-touch-icon-precomposed " href="images/ios-desktop.png ">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage " content="images/touch/ms-touch-icon-144x144-precomposed.png ">
+    <meta name="msapplication-TileColor " content="#3372DF ">
+
+    <link rel="shortcut icon " href="images/favicon.png ">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical " href="http://www.example.com/ ">
+    -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en " rel="stylesheet ">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons " rel="stylesheet ">
+    <link rel="stylesheet " href="css/material.min.css ">
+    <link rel="stylesheet " href="css/styles.css ">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+</head>
+
+<body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header ">
+        <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600 ">
+            <div class="mdl-layout__header-row ">
+                <span class="mdl-layout-title">EMRWait App</span>
+            </div>
+        </header>
+        <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50 ">
+            <header class="demo-drawer-header ">
+                <img src="images/user.png " class="demo-avatar ">
+                <div class="demo-avatar-dropdown ">
+                    <span id="userId" class="center ">USER ID</span>
+                </div>
+            </header>
+            <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800 ">
+                <a class="mdl-navigation__link " href="home.html"><i class="mdl-color-text--blue-grey-400 material-icons " role="presentation ">home</i>Home</a>
+                <a class="mdl-navigation__link " href="hospitalList.html"><i class="mdl-color-text--blue-grey-400 material-icons " role="presentation ">whatshot</i>Hospitals</a>
+                <a class="mdl-navigation__link " href="trends.html"><i class="mdl-color-text--blue-grey-400 material-icons " role="presentation ">person</i>My Profile</a>
+                <a class="mdl-navigation__link " href="" onclick="logout()"><i class="mdl-color-text--blue-grey-400 material-icons " role="presentation ">exit_to_app</i>Logout</a>
+
+                <div class="mdl-layout-spacer "></div>
+            </nav>
+        </div>
+        <main class="mdl-layout__content mdl-color--grey-800 ">
+
+            <div id="loginDiv" class="mdl-card mdl-shadow--6dp center">
+                <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                    <h2 class="mdl-card__title-text center">Log in</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input mdl-color-text--gray-400" type="email" id="useremail" />
+                            <label class="mdl-textfield__label" for="username">Email</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="password" id="userpass" />
+                            <label class="mdl-textfield__label mdl-color-text--gray-400" for="userpass">Password</label>
+                        </div>
+                    </form>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored fullwidthbutton marginspace" onclick="login()">Log in</button>
+                    <button id="showRegister" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored fullwidthbutton marginspace">Register</button>
+                </div>
+            </div>
+            <div id="registerDiv" class="mdl-card mdl-shadow--6dp center">
+                <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                    <h2 class="mdl-card__title-text center">Register</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input mdl-color-text--gray-400" type="text" id="registerName" />
+                            <label class="mdl-textfield__label" for="registerName">Name</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input mdl-color-text--gray-400" type="email" id="registerEmail" />
+                            <label class="mdl-textfield__label" for="registerName">Email</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="password" id="registerPassword" />
+                            <label class="mdl-textfield__label mdl-color-text--gray-400" for="registerPassword">Password</label>
+                        </div>
+                    </form>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored fullwidthbutton marginspace" onclick="register()">Register</button>
+                    <button id="showLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored fullwidthbutton">Log in</button>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="js/material.min.js "></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
