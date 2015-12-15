@@ -32,9 +32,9 @@ $("#setReminderBtn").click(function () {
     var phoneNumber = $('#patPhone').val();
     console.log(phoneNumber);
     //add twilio texting code here
-//    sendText(phoneNumber);
+    //    sendText(phoneNumber);
 
-//    alert("Your Reminder has been set!");
+    //    alert("Your Reminder has been set!");
     console.log("Reminder Set");
     $("#reminderDiv").hide("fast", function () {});
 });
@@ -121,7 +121,34 @@ function getCount(data) {
 
     var estTime = count * 10;
     console.log(estTime);
-    $('#waittime').text(estTime + " Minutes");
+
+    var seconds = estTime * 60;
+
+    function timer() {
+        var days = Math.floor(seconds / 24 / 60 / 60);
+        var hoursLeft = Math.floor((seconds) - (days * 86400));
+        var hours = Math.floor(hoursLeft / 3600);
+        var minutesLeft = Math.floor((hoursLeft) - (hours * 3600));
+        var minutes = Math.floor(minutesLeft / 60);
+        var remainingSeconds = seconds % 60;
+        if (remainingSeconds < 10) {
+            remainingSeconds = "0" + remainingSeconds;
+        }
+        $('#waittime').text(minutes + ":" + remainingSeconds);
+
+        if (seconds == 0) {
+            clearInterval(countdownTimer);
+            $('#waittime').text("No Wait Time :)");
+            document.getElementById('countdown').innerHTML = "Completed";
+        } else {
+            seconds--;
+        }
+    }
+    var countdownTimer = setInterval(function () {
+        timer()
+    }, 1000);
+
+
     initMap();
 }
 

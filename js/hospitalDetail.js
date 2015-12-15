@@ -104,7 +104,9 @@ function getCount(data) {
             seconds--;
         }
     }
-    var countdownTimer = setInterval('timer()', 1000);
+    var countdownTimer = setInterval(function () {
+        timer()
+    }, 1000);
 
 
     initMap();
