@@ -46,5 +46,5 @@
 
 		// Display a confirmation message on the screen
       echo "<script>alert('Thanks for Setting your Reminder');</script>";
-      echo "<script>document.location.href='home.html'</script>";
+      echo "<script>document.location.href='../home.html'</script>";
 	}
